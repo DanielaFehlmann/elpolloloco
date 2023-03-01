@@ -1,0 +1,362 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vH;
+  margin: 0;
+  background-image: url('img/5_background/bg.jpg');
+  background-position: 100% 50%;
+  font-family: 'Kalam';
+  font-size: 18px;
+}
+canvas {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  display: block;
+}
+
+
+/* EXPLANATION */
+.explanation {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.explanation img {
+ height: 100%;
+ width: 100%;
+}
+.explanation span {
+  position: absolute;
+  top: 15%;
+  left: 6%;
+  text-align: center;
+  width: 88%;
+  font-size: 25px;
+}
+.actionIcons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 20px;
+  margin-top: 50px;
+}
+.actionIcons img {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+  margin-left: 15px;
+}
+.actionIcons b {
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+
+/* STARTSCREEN */
+.startscreen{
+ position: relative;
+ height: 480px;
+}
+.startscreen_img {
+  height: 480px;
+  width: 720px;
+  border-radius: 10px;
+}
+.startscreen_buttons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+.startscreen_buttons img {
+  filter: invert(0.9);
+  transition: filter 125ms ease-in-out;
+  cursor: pointer;
+  height: 70px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+.startscreen_buttons button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+.startscreen_buttons img:hover {
+  filter: invert(1);
+}
+
+
+/* ENDSCREEN */
+.endscreen {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.endscreen_img{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+.endscreen_button {
+  position: absolute;
+  left: calc(50% - 62px);
+  top: 80%;
+  border: 1px solid #b35526;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: #ffc700;
+  font-family:'Kalam';
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+  transition: background-color 100ms ease-in-out;
+}
+.endscreen_button:hover {
+  background-color: #ebb800;
+}
+
+
+/* MOBILE BUTTONS*/
+#icons {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  bottom: 5px;
+}
+#icons img {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+.bottom {
+  bottom: 2% !important;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* HIDE */
+.d-none {
+  display: none;
+}
+.v-none {
+  visibility: hidden;
+}
+
+
+/* FULLSCREEN */
+#fs {
+  position: relative;
+}
+.canvasFullscreen {
+  width: 100%;
+  height: 100%;
+}
+.startscreen_fs{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+.startscreen_img_fs {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+.endscreen_fs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.endscreen_img_fs{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 1024px) {
+  .show{
+    visibility: visible !important;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  canvas {
+    width: 100%;
+  }
+  .actionIcons {
+    margin-top: 20px;
+  }
+  .startscreen {
+    height: auto;
+  }
+  .startscreen_img {
+    width: 100%;
+    height: 100%;
+  }
+  #icons {
+    bottom: 15px;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+  .explanation span {
+    font-size: 22px;
+  }
+  .actionIcons {
+    font-size: 18px;
+  }
+  .startscreen_buttons img{
+    height: 60px;
+    width: 60px;
+  }
+}
+
+
+@media only screen and (max-width: 560px) {
+  .explanation span {
+    font-size: 20px;
+  }
+  #icons {
+    font-size: 14px;
+    bottom: 15px;
+  }
+  #icons img {
+    height: 25px;
+    width: 25px;
+  }
+  .startscreen_buttons img{
+    height: 50px;
+    width: 50px;
+  }
+  .actionIcons {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  .actionIcons img {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .explanation span {
+    font-size: 18px;
+  }
+  .actionIcons {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 470px) {
+  .explanation span {
+    font-size: 16px;
+  }
+  .actionIcons {
+    font-size: 12px;
+  }
+  .actionIcons img {
+    height: 12px;
+    width: 12px;
+  }
+  .startscreen_buttons img{
+    height: 40px;
+    width: 40px;
+  }
+  #icons {
+    font-size: 12px;
+  }
+}
+
+
+@media only screen and (max-width: 415px) {
+  .explanation span {
+    font-size: 14px;
+  }
+  .actionIcons img {
+    margin-left: 10px;
+  }
+  .actionIcons b {
+    margin-left: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 390px) {
+  .explanation span {
+    font-size: 12px;
+  }
+  .actionIcons img {
+    margin-left: 8px;
+  }
+  .actionIcons b {
+    margin-left: 10px;
+  }
+  .startscreen_buttons img {
+    height: 25px;
+    width: 25px;
+  }
+  #icons {
+    font-size: 10px;
+    bottom: 12px;
+  }
+  #icons img {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+
+@media only screen and (max-width: 315px) {
+  .actionIcons {
+    margin-top: 0;
+  }
+}
+
+
+@media only screen and (max-width: 300px) {
+  .explanation span {
+    font-size: 10px;
+  }
+  .actionIcons {
+    font-size: 10px;
+  }
+}
+
+
+@media only screen and (max-height: 480px) {
+  canvas {
+    height: 100vH;
+    width: 100vw;
+    border-radius: 0;
+  }
+  #fs {
+    overflow: hidden;
+  }
+  .startscreen{
+    height: 100vH;
+  }
+  .startscreen_img {
+    height: 100vH;
+    width: 100vw;
+    border-radius: 0;
+  }  
+}

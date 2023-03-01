@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El pollo loco</title>
+  <link rel="icon" type="image/x-icon" href="img/icons/fav.png">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="classes/world.class.js"></script>
+  <script src="classes/drawable_object.class.js"></script>
+  <script src="classes/movable_object.class.js"></script>
+  <script src="classes/status_bar.class.js"></script>
+  <script src="classes/status_bar_bottles.class.js"></script>
+  <script src="classes/status_bar_coins.class.js"></script>
+  <script src="classes/status_bar_lifePoints.class.js"></script>
+  <script src="classes/character.class.js"></script>
+  <script src="classes/chicken.class.js"></script>
+  <script src="classes/cloud.class.js"></script>
+  <script src="classes/background_object.class.js"></script>
+  <script src="classes/keyboard.class.js"></script>
+  <script src="classes/level.class.js"></script>
+  <script src="classes/endboss.class.js"></script>
+  <script src="classes/chick.class.js"></script>
+  <script src="classes/coins.class.js"></script>
+  <script src="classes/bottles_air.class.js"></script>
+  <script src="classes/bottles_ground.class.js"></script>
+  <script src="classes/throwableBottles.class.js"></script>
+  <script src="js/game.js"></script>
+  <script src="levels/level1.js"></script>
+</head>
+
+
+<body onload="init()">
+  <div id="fs">
+
+    <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
+
+    <div class="startscreen" id="startscreen">
+      <img class="startscreen_img" src="img/9_intro_outro_screens/start/startscreen_2.png" id="startscreen_img">
+      <div class="startscreen_buttons">
+        <button onclick="startGame()" id="startscreen_button"><img src='img/icons/play.svg'></button>
+        <img onclick="openInfo()" src="img/icons/info.svg">
+      </div>
+    </div>
+
+    <div id="icons">
+      <img id="volume" src="img/icons/volume_on.svg" onclick="changeVolume()">
+      <img id="arrowUp" src="img/icons/arrow_up.svg" class="v-none show">
+      <img id="bottle" src="img/icons/bottle.svg" class="v-none show">
+      <img id="arrowLeft" src="img/icons/arrow_left.svg" class="v-none show">
+      <img id="arrowRight" src="img/icons/arrow_right.svg" class="v-none show">
+      <img id="fullscreen" src="img/icons/maximize.svg" onclick="changeWindowSize()">
+    </div>
+
+    <div class="explanation d-none" id="explanation" onclick="closeInfo()">
+      <img src="img/5_background/paper.png">
+      <span>
+        slip into the role of the "Pepe peligroso" and collect coins and bottles.
+        But be careful: some chickens could cross your path!
+        Just jump on them to eliminate them.
+        If you meet a really large chicken, make sure you have enough bottles with you...<br>
+        <div class="actionIcons">
+          <div class="center"><img src="img/icons/arrow_left.svg">move left</div>
+          <div class="center"><img src="img/icons/arrow_right.svg">move right</div> 
+          <div class="center"><img src="img/icons/letter_d.svg">throw bottle</div>
+          <div class="center"><b>space </b>  = jump</div>
+        </div>
+      </span>
+    </div>
+      
+    <div class="endscreen d-none" id="endscreen_lost">
+      <img class="endscreen_img" src="img/9_intro_outro_screens/game_over/you lost.png">
+      <button class="endscreen_button" onclick="location.reload()">go back</button>
+    </div>
+
+    <div class="endscreen d-none" id="endscreen_won">
+      <img class="endscreen_img" src="img/9_intro_outro_screens/game_over/game over!.png">
+      <button class="endscreen_button" onclick="location.reload()">go back</button>
+    </div>
+
+  </div>
+</body>
+</html>
