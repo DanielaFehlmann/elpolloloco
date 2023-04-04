@@ -38,6 +38,9 @@ class Chick extends MovableObject{
   }
 
 
+  /**
+   * function to animate a chick
+   */
   animate() {
     setInterval(() =>{
       if (!this.isDead()) {
@@ -54,17 +57,26 @@ class Chick extends MovableObject{
   }
 
 
+  /**
+   * function to play animations when a chick is walking
+   */
   reactWalk() {
     this.playAnimation(this.images_walking);
   }
 
 
+  /**
+   * function to play animations and sounds when a chick is dead
+   */
   reactDead() {
     this.playAnimationDead(this.images_dead);
     this.checkPlaySound();
   }
 
 
+  /**
+   * function to play sounds when a chick is dying
+   */
   checkPlaySound() {
     if (this.chick_hurt == 0) {
       this.audio_chick_hurt.volume = 0.5;

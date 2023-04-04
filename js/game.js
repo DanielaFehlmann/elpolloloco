@@ -19,6 +19,9 @@ function init() {
 }
 
 
+/**
+ * function to start the game by clicking on the "play"-button
+ */
 function startGame() {
   document.getElementById('startscreen').classList.add('d-none');
   document.getElementById('canvas').classList.remove('d-none');
@@ -33,16 +36,25 @@ function startGame() {
 } 
 
 
+/**
+ * function to open the info menu by clicking on the "i"-button
+ */
 function openInfo() {
   document.getElementById('explanation').classList.remove('d-none');
 }
 
 
+/**
+ * function to close the info menu by clicking on the screen
+ */
 function closeInfo() {
   document.getElementById('explanation').classList.add('d-none');
 }
 
 
+/**
+ * function to change the volume by clicking on the "speaker"-button
+ */
 function changeVolume() {
   if (imgVolume == 0) {
     document.getElementById('volume').src = 'img/icons/volume_off.svg';
@@ -56,6 +68,9 @@ function changeVolume() {
 }
 
 
+/**
+ * fucntion to stop the music
+ */
 function stopMusic() {
   audio_bg.muted = true;
   audio_bg.pause();
@@ -64,6 +79,9 @@ function stopMusic() {
 }
 
 
+/**
+ * function to play music
+ */
 function playMusic() {
   audio_bg.muted = false;
   audio_bg.play();
@@ -72,6 +90,9 @@ function playMusic() {
 }
 
 
+/**
+ * function to switch to fullscreen
+ */
 function changeWindowSize() {
   if (imgScreen == 0) {
     settingsForFullscreen();
@@ -81,6 +102,9 @@ function changeWindowSize() {
 }
 
 
+/**
+ * function to enable fullscreen
+ */
 function settingsForFullscreen() {
   document.getElementById('fullscreen').src = 'img/icons/minimize.svg';
   imgScreen = 1;
@@ -90,6 +114,9 @@ function settingsForFullscreen() {
 }
 
 
+/**
+ * function to disable fullscreen
+ */
 function settingsForSmallscreen() {
   document.getElementById('fullscreen').src = 'img/icons/maximize.svg';
   imgScreen = 0;
@@ -98,7 +125,9 @@ function settingsForSmallscreen() {
   removeFullscreenStyles();
 }
 
-
+/**
+ * function to enter fullscreen
+ */
 function enterFullscreen(element) {
   if(element.requestFullscreen) {
     element.requestFullscreen();
@@ -110,6 +139,9 @@ function enterFullscreen(element) {
 }
 
 
+/**
+ * function to exit fullscreen
+ */
 function exitFullscreen() {
   if(document.exitFullscreen) {
     document.exitFullscreen();
@@ -119,6 +151,9 @@ function exitFullscreen() {
 }
 
 
+/**
+ * function to add style for fullscreen
+ */
 function addFullscreenStyles() {
   document.getElementById('canvas').classList.add('canvasFullscreen');
   document.getElementById('startscreen').classList.add('startscreen_fs');
@@ -126,18 +161,27 @@ function addFullscreenStyles() {
 }
 
 
+/**
+ * function to remove style for fullscreen
+ */
 function removeSmallscreenStyles() {
   document.getElementById('startscreen').classList.remove('startscreen');
   document.getElementById('startscreen_img').classList.remove('startscreen_img');
 }
 
 
+/**
+ * function to add style when leaving fullscreen
+ */
 function addSmallscreenStyles() {
   document.getElementById('startscreen').classList.add('startscreen');
   document.getElementById('startscreen_img').classList.add('startscreen_img');
 }
 
 
+/**
+ * function to remove style when leaving fullscreen
+ */
 function removeFullscreenStyles() {
   document.getElementById('canvas').classList.remove('canvasFullscreen');
   document.getElementById('startscreen').classList.remove('startscreen_fs');
@@ -145,6 +189,9 @@ function removeFullscreenStyles() {
 }
 
 
+/**
+ * function to mute music when game is over and show endscreen
+ */
 function lostGame() {
   audio_bg.pause();
   audio_bg2.pause();
@@ -158,6 +205,9 @@ function lostGame() {
 }
 
 
+/**
+ * function to mute music when game is over and show endscreen
+ */
 function wonGame() {
   audio_bg.pause();
   audio_bg2.pause();
@@ -171,11 +221,17 @@ function wonGame() {
 }
 
 
+/**
+ * function to clear all intervals after game is over
+ */
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 
+/**
+ * function to check which keys a pressed
+ */
 window.addEventListener("keydown", (e) => {
   if(e.keyCode == 37) {
     keyboard.left = true;
@@ -192,6 +248,9 @@ window.addEventListener("keydown", (e) => {
 });
 
 
+/**
+ * function to check which keys a pressed
+ */
 window.addEventListener("keyup", (e) => {
   if(e.keyCode == 37) {
     keyboard.left = false;
@@ -207,51 +266,49 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
+
+/**
+ * function to enable mobile buttons
+ */
 function mobileButtons() {
-document.getElementById('arrowLeft').addEventListener('touchstart', (e) => {
-  e.preventDefault();
-  keyboard.left = true;
-});
 
+  document.getElementById('arrowLeft').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.left = true;
+  });
 
-document.getElementById('arrowLeft').addEventListener('touchend', (e) => {
-  e.preventDefault();
-  keyboard.left = false;
-});
+  document.getElementById('arrowLeft').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.left = false;
+  });
 
+  document.getElementById('arrowRight').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.right = true;
+  });
 
-document.getElementById('arrowRight').addEventListener('touchstart', (e) => {
-  e.preventDefault();
-  keyboard.right = true;
-});
+  document.getElementById('arrowRight').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.right = false;
+  });
 
+  document.getElementById('bottle').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.keyD = true;
+  });
 
-document.getElementById('arrowRight').addEventListener('touchend', (e) => {
-  e.preventDefault();
-  keyboard.right = false;
-});
+  document.getElementById('bottle').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.keyD = false;
+  });
 
+  document.getElementById('arrowUp').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.space = true;
+  });
 
-document.getElementById('bottle').addEventListener('touchstart', (e) => {
-  e.preventDefault();
-  keyboard.keyD = true;
-});
-
-
-document.getElementById('bottle').addEventListener('touchend', (e) => {
-  e.preventDefault();
-  keyboard.keyD = false;
-});
-
-
-document.getElementById('arrowUp').addEventListener('touchstart', (e) => {
-  e.preventDefault();
-  keyboard.space = true;
-});
-
-
-document.getElementById('arrowUp').addEventListener('touchend', (e) => {
-  e.preventDefault();
-  keyboard.space = false;
-});
+  document.getElementById('arrowUp').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.space = false;
+  });
 }

@@ -18,13 +18,20 @@ class StatusBarCoin extends StatusBar {
   }
 
 
+  /**
+     * function to fill the status bars
+     * @param {number} percentage - percentage of status bar
+     */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.statusBarImages[this.getCorrectImage()]
     this.img = this.imageCache[path];
   }
 
-
+  
+  /**
+     * @returns - number to fill the status bar correctly
+     */
   getCorrectImage() {
     if (this.percentage == 100) {
       return 5;

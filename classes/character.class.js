@@ -83,6 +83,9 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * function to animate the character
+   */
   animate() {
     setInterval( () => {
       audio_walk.pause();
@@ -98,6 +101,9 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * function to check which animation should be activated
+   */
   checkMovementOfCharacter() {
     if (this.isDead()) {
       this.gameIsOver();
@@ -115,6 +121,9 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * function to check if the character is moving right
+   */
   checkMoveRight() {
     if (this.keyRightPressed()) {
       this.moveRight();
@@ -124,16 +133,25 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * @returns - key "arrow right" is pressed & char is not on end of level
+   */
   keyRightPressed() {
     return this.world.keyboard.right && this.x<world.level.level_end_x;
   }
 
 
+  /**
+   * function to play a walking sound
+   */
   soundWalking() {
     audio_walk.play();
   }
 
 
+  /**
+   * function to check if the character is moving left
+   */
   checkMoveLeft() {
     if (this.keyLeftPressed()) {
       this.moveLeft();
@@ -142,12 +160,17 @@ class Character extends MovableObject{
     };
   }
 
-
+ /**
+   * @returns - key "arrow left" is pressed
+   */
   keyLeftPressed() {
     return this.world.keyboard.left && this.x>0;
   }
 
 
+  /**
+   * function to check if the character is jumping
+   */
   checkJump() {
     if (this.keySpacePressed()) {
       this.jump();
@@ -156,11 +179,17 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * @returns - key "space" is pressed
+   */
   keySpacePressed() {
     return this.world.keyboard.space && !this.isAboveGround();
   }
 
 
+  /**
+   * function to play a jumping sound
+   */
   soundJumping() {
     this.audio_jump.volume = 0.5;
     setTimeout(() => {
@@ -169,48 +198,66 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * function to end the game
+   */
   gameIsOver() {
-    this.time = [];
-    this.timeIdle = 0;
+    this.resetTimeIdle();
     this.playAnimationDead(this.images_dead);
     audio_walk.pause();
     lostGame();
   }
 
 
+  /**
+   * function to play animations when the character is getting hurt
+   */
   reactHurt() {
-    this.time = [];
-    this.timeIdle = 0;
+    this.resetTimeIdle();
     this.playAnimation(this.images_hurt);
     this.audio_hurt.play();
   }
 
 
+  /**
+   * function to play animations when the character is walking
+   */
   reactWalk() {
-    this.time = [];
-    this.timeIdle = 0;
+    this.resetTimeIdle();
     this.currentImageJump = 0;
     this.playAnimation(this.images_walking);
   }
 
 
+  /**
+   * @returns - key "arrow right" or "arrow left" is pressed and character is not above the ground
+   */
   isWalking() {
     return (this.world.keyboard.right || this.world.keyboard.left) && !(this.isAboveGround())
   }
 
 
+  /**
+   * function to play animations when the character is jumping
+   */
   reactJump() {
-    this.time = [];
-    this.timeIdle = 0;
+    this.resetTimeIdle();
     this.playAnimationJump(this.images_jumping);
   }
 
 
+  /**
+   * 
+   * @returns - no key is pressed and character is not above the ground for max 3 seconds
+   */
   isIdle() {
     return !this.isAboveGround() && !this.world.keyboard.left && !this.world.keyboard.right && this.timeIdle < 3;
   }
 
 
+  /**
+   * function to play animations when the character is idle
+   */
   reactIdle() {
     this.currentImageJump = 0;
     this.playAnimation(this.images_idle);
@@ -219,11 +266,18 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * 
+   * @returns - no key is pressed and character is not above the ground for more than 3 seconds
+   */
   isIdleLong() {
     return !this.isAboveGround() && !this.world.keyboard.left && !this.world.keyboard.right && this.timeIdle >= 3;
   }
 
 
+  /**
+   * function to play animations when the character has been idle for a more than 3 seconds
+   */
   reactIdleLong() {
     this.time = [];
     this.currentImageJump = 0;
@@ -231,12 +285,18 @@ class Character extends MovableObject{
   }
 
 
+  /**
+   * function to reset the time of idle when key is pressed
+   */
   resetTimeIdle() {
     this.time = [];
     this.timeIdle = 0;
   }
 
 
+  /**
+   * function to check if bottle is throwing
+   */
   checkThrowBottle() {
     if (this.world.keyboard.keyD) {
       this.resetTimeIdle();

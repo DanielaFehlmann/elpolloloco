@@ -33,6 +33,9 @@ class Chicken extends MovableObject{
   }
 
 
+  /**
+   * function to animate a chicken
+   */
   animate() {
     setInterval(() =>{
       if (!this.isDead()) {
@@ -50,17 +53,26 @@ class Chicken extends MovableObject{
   }
 
 
+  /**
+   * function to play animations when a chicken is walking
+   */
   reactWalk() {
     this.playAnimation(this.images_walking);
   }
 
 
+  /**
+   * function to play animations and sounds when a chicken is dead
+   */
   reactDead() {
     this.playAnimationDead(this.images_dead);
     this.checkPlaySound();
   }
 
 
+  /**
+   * function to play sounds when a chicken is dying
+   */
   checkPlaySound() {
     if (this.chicken_hurt == 0) {
       this.audio_chicken_hurt.volume = 0.5;

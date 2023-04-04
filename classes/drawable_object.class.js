@@ -10,12 +10,20 @@ currentImageDead = 0;
 currentImageJump = 0;
 
 
+  /**
+   * function to load an image
+   * @param {} path - path of image
+   */
   loadImage(path) {
     this.img = new Image();
     this.img.src = path;
   }
 
 
+  /**
+   * function to load more images
+   * @param {*} arr - array contains paths of images
+   */
   loadImages(arr) {
     arr.forEach((path) => {
       let img = new Image();
@@ -25,6 +33,9 @@ currentImageJump = 0;
   }
 
 
+  /**
+   * function to draw an image
+   */
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }

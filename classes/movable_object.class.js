@@ -7,16 +7,26 @@ class MovableObject extends DrawableObject{
   bottleHit = false;
 
 
+  /**
+   * function to move left
+   */
   moveLeft() {
     this.x -= this.speed;
   }
 
 
+  /**
+   * function to move right
+   */
   moveRight() {
     this.x += this.speed;
   }
 
 
+  /**
+   * function to play animations
+   * @param {} images - array contains paths of images
+   */
   playAnimation(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
@@ -25,6 +35,10 @@ class MovableObject extends DrawableObject{
   }
 
 
+  /**
+   * function to play animations of death
+   * @param {*} images - array contains paths of images
+   */
   playAnimationDead(images) {
     let path = images[this.currentImageDead];
     this.img = this.imageCache[path];

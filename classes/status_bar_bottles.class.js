@@ -18,6 +18,10 @@ class StatusBarBottle extends StatusBar {
   }
 
 
+  /**
+   * function to fill the status bars
+   * @param {number} percentage - percentage of status bar
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.statusBarImages[this.getCorrectImage()]
@@ -25,6 +29,9 @@ class StatusBarBottle extends StatusBar {
   }
 
 
+  /**
+   * @returns - number to fill the status bar correctly
+   */
   getCorrectImage() {
     if (this.percentage == 10) {
       return 5;

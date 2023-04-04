@@ -49,6 +49,9 @@ lastHit;
   }
 
 
+  /**
+   * function to animate the endboss (big chicken)
+   */
   animate() {
     setInterval( () => {
       if (this.isDead()) {
@@ -65,17 +68,27 @@ lastHit;
   }
 
 
+  /**
+   * function to end the game
+   */
   gameIsOver() {
     this.playAnimationDead(this.images_dead);
     wonGame();
   }
 
 
+  /**
+   * function to save the time when the character got hit
+   */
   gotHit() {
     this.lastHit = new Date().getTime();
   }
 
 
+  /**
+   * 
+   * @returns - time passed since character got hit
+   */
   gotHurt() {
     let timepassed =  new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
@@ -83,17 +96,27 @@ lastHit;
   }
 
 
+  /**
+   * function to play animations and sounds when the endboss gets hurt
+   */
   reactHurt() {
     this.playAnimation(this.images_hurt);
     this.audio_chicken_hurt.play();
   }
 
 
+  /**
+   * 
+   * @returns - small distance to character
+   */
   distanceLeftSmall() {
     return this.x - this.world.character.x < 700 && this.x - this.world.character.x  > 30 ;
   }
 
 
+  /**
+   * function to play sounds when the endboss appears
+   */
   playSound() {
     audio_bg.volume = 0;
     audio_bg2.volume = 1;
@@ -102,11 +125,18 @@ lastHit;
   }
 
 
+  /**
+   * 
+   * @returns - big distance to character
+   */
   distanceRightSmall() {
     return this.x - this.world.character.x > -700 && this.x - this.world.character.x < -300;
   }
 
 
+  /**
+   * function to check the distance from the endboss to the character
+   */
   checkDistance() {
     setInterval(() => {
       if (this.distanceLeftSmall() && (!this.isDead())) {

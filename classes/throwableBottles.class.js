@@ -36,6 +36,10 @@ class ThrowableBottle extends MovableObject {
   }
 
 
+  /**
+   * function to throw a bottle to left or right
+   * @param {number} mirror - 0 or 1 (throwing to left or right)
+   */
   throw(mirror) {
     this.speedY = 25;
     this.applyGravity();
@@ -50,6 +54,10 @@ class ThrowableBottle extends MovableObject {
   }
 
 
+  /**
+   * function to throw a bottle to left or right
+   * @param {number} mirror - 0 or 1 (throwing to left or right)
+   */
   bottleThrow(mirror) {
     if (mirror == 0) {
       this.x += 10;
@@ -61,6 +69,9 @@ class ThrowableBottle extends MovableObject {
   }
 
 
+  /**
+   * function to play sounds when a bottle is in the air
+   */
   playSoundThrow() {
     if (this.bottle_throw == 0) {
       this.audio_bottle_throw.volume = 0.7;
@@ -70,12 +81,18 @@ class ThrowableBottle extends MovableObject {
   }
 
 
+  /**
+   * function to play animation and sounds when the bottle is splashing
+   */
   bottleSplash() {
     this.playAnimationDead(this.images_splash);
     this.playSoundSplash();
   }
 
 
+  /**
+   * function to play sounds when the bottle is splasing
+   */
   playSoundSplash() {
     if (this.bottle_throw == 1) {
       this.audio_bottle_splash.play();
